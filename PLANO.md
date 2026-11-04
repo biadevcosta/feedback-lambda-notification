@@ -1,4 +1,4 @@
-# Plano - feedback-lambda-notificacao
+# Plano - feedback-lambda-notification
 
 Tarefas extraídas da planilha de planejamento. Siga a ordem e respeite "Depende de".
 Ao validar uma tarefa, troque `[ ]` por `[x]`.
@@ -32,5 +32,5 @@ Como pedir ao Claude: `Execute a tarefa X.Y do PLANO.md` (uma por sessão; use /
 Confirme com o time que estas tarefas já foram concluídas antes de começar.
 
 - **4.3** (feedback-infra): Função de notificação com gatilho do Streams (só INSERT com urgência alta), DLQ e permissões ListUsersInGroup e ses:SendEmail
-- **4.4** (feedback-infra): Role OIDC do repositório feedback-lambda-notificacao, só com lambda:UpdateFunctionCode nesta função
+- **4.4** (feedback-infra): Role OIDC do repositório feedback-lambda-notification, só com lambda:UpdateFunctionCode nesta função
 - **4.8** (grupo): Teste ponta a ponta: enviar uma nota baixa e receber o e-mail de urgência
