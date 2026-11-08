@@ -32,8 +32,9 @@ Tabela `Evaluations`, chave `evaluationId` (string, UUID). Atributos: `userId` (
 
 ## Esta função
 Disparada pelo DynamoDB Streams (NEW_IMAGE) quando entra uma avaliação crítica. Avisa os admins por e-mail (SES).
-- Estrutura: `pom.xml`, `src/main/java/com/feedback/notification/NotificationHandler.java` (implementa `RequestHandler<DynamodbEvent, Void>`), `src/test/java/...`, `.github/workflows/ci-cd.yml` e `README.md`.
-- Dependências: `aws-lambda-java-core`, `aws-lambda-java-events` (já traz `DynamodbEvent` tipado), AWS SDK v2 (`cognitoidentityprovider`, `ses`), `maven-shade-plugin`.
+- Arquitetura e testes: seguir a skill `java-lambda-standard` (hexagonal: `domain/` com o `UrgencyEmailRenderer` puro, `application/` com `NotifyAdminsUseCase` e as portas `AdminDirectory` e `EmailSender`, `adapter/in/dynamodbstream/`, `adapter/out/cognito/`, `adapter/out/ses/`, `config/`). `NotificationHandler.java` (`RequestHandler<DynamodbEvent, Void>`) na raiz do pacote só faz o bootstrap. Build com `./mvnw verify`.
+- Dependências: `aws-lambda-java-core`, `aws-lambda-java-events` (já traz `DynamodbEvent` tipado), AWS SDK v2 (`cognitoidentityprovider`, `ses`, com `url-connection-client`), `maven-shade-plugin`. Testes: JUnit5, Mockito, AssertJ, ArchUnit e `aws-lambda-java-serialization`.
+- Um e-mail por admin (SES `toAddresses` com um destinatário), para um admin não ver o endereço dos outros.
 - Variáveis de ambiente: `USER_POOL_ID`, `ADMIN_GROUP` (`admins`) e `SES_SENDER`.
 - O filtro (INSERT e urgency high) é feito no Terraform. No código, ignore também registros que não sejam INSERT com urgency high (defesa).
 - `aws-lambda-java-events` já desserializa os registros do Stream em `AttributeValue` tipado — não precisa parsear o DynamoDB JSON manualmente.

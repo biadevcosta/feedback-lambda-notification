@@ -1,0 +1,30 @@
+{
+  "Records": [
+    {
+      "eventID": "event-1",
+      "eventName": "INSERT",
+      "eventVersion": "1.1",
+      "eventSource": "aws:dynamodb",
+      "awsRegion": "sa-east-1",
+      "dynamodb": {
+        "ApproximateCreationDateTime": 1794187800,
+        "Keys": {
+          "evaluationId": { "S": "eval-1" }
+        },
+        "NewImage": {
+          "evaluationId": { "S": "eval-1" },
+          "userId": { "S": "11111111-2222-3333-4444-555555555555" },
+          "description": { "S": "The class was <b>confusing</b>" },
+          "score": { "N": "2" },
+          "urgency": { "S": "high" },
+          "submittedAt": { "S": "2026-11-09T01:30:00.000Z" },
+          "day": { "S": "2026-11-08" }
+        },
+        "SequenceNumber": "100000000000000000001",
+        "SizeBytes": 220,
+        "StreamViewType": "NEW_IMAGE"
+      },
+      "eventSourceARN": "arn:aws:dynamodb:sa-east-1:123456789012:table/Evaluations/stream/2026-11-01T00:00:00.000"
+    }
+  ]
+}

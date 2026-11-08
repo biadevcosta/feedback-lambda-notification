@@ -9,11 +9,11 @@ Como pedir ao Claude: `Execute a tarefa X.Y do PLANO.md` (uma por sessão; use /
 
 ### Fase 4 - Notificação
 
-- [ ] **4.5** NotificationHandler.java: listar os e-mails do grupo admins no Cognito, montar o e-mail (description, urgency, submitted at) e enviar pelo SES
+- [x] **4.5** NotificationHandler.java: listar os e-mails do grupo admins no Cognito, montar o e-mail (description, urgency, submitted at) e enviar pelo SES
   - Validar: Teste local gera o corpo do e-mail esperado
   - Depende de: 4.3
 
-- [ ] **4.6** Testes unitários (JUnit5 + Mockito, mockando Cognito e SES)
+- [x] **4.6** Testes unitários (JUnit5 + Mockito, mockando Cognito e SES)
   - Validar: mvn test verde
   - Depende de: 4.5
 
