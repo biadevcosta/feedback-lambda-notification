@@ -1,0 +1,72 @@
+{
+  "Records": [
+    {
+      "eventID": "event-insert-high",
+      "eventName": "INSERT",
+      "eventSource": "aws:dynamodb",
+      "awsRegion": "sa-east-1",
+      "dynamodb": {
+        "Keys": { "evaluationId": { "S": "eval-high" } },
+        "NewImage": {
+          "evaluationId": { "S": "eval-high" },
+          "description": { "S": "Too fast" },
+          "score": { "N": "1" },
+          "urgency": { "S": "high" },
+          "submittedAt": { "S": "2026-11-09T01:30:00.000Z" },
+          "day": { "S": "2026-11-08" }
+        },
+        "SequenceNumber": "1",
+        "StreamViewType": "NEW_IMAGE"
+      }
+    },
+    {
+      "eventID": "event-insert-low",
+      "eventName": "INSERT",
+      "eventSource": "aws:dynamodb",
+      "awsRegion": "sa-east-1",
+      "dynamodb": {
+        "Keys": { "evaluationId": { "S": "eval-low" } },
+        "NewImage": {
+          "evaluationId": { "S": "eval-low" },
+          "description": { "S": "Great class" },
+          "score": { "N": "9" },
+          "urgency": { "S": "low" },
+          "submittedAt": { "S": "2026-11-09T01:31:00.000Z" },
+          "day": { "S": "2026-11-08" }
+        },
+        "SequenceNumber": "2",
+        "StreamViewType": "NEW_IMAGE"
+      }
+    },
+    {
+      "eventID": "event-modify-high",
+      "eventName": "MODIFY",
+      "eventSource": "aws:dynamodb",
+      "awsRegion": "sa-east-1",
+      "dynamodb": {
+        "Keys": { "evaluationId": { "S": "eval-modified" } },
+        "NewImage": {
+          "evaluationId": { "S": "eval-modified" },
+          "description": { "S": "Edited" },
+          "score": { "N": "0" },
+          "urgency": { "S": "high" },
+          "submittedAt": { "S": "2026-11-09T01:32:00.000Z" },
+          "day": { "S": "2026-11-08" }
+        },
+        "SequenceNumber": "3",
+        "StreamViewType": "NEW_IMAGE"
+      }
+    },
+    {
+      "eventID": "event-remove",
+      "eventName": "REMOVE",
+      "eventSource": "aws:dynamodb",
+      "awsRegion": "sa-east-1",
+      "dynamodb": {
+        "Keys": { "evaluationId": { "S": "eval-removed" } },
+        "SequenceNumber": "4",
+        "StreamViewType": "NEW_IMAGE"
+      }
+    }
+  ]
+}
